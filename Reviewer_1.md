@@ -9,13 +9,13 @@ AtM projects the latent variable $z$ into both the attention key and value space
 
 $k' = v' = mlp(z)$
 
-$q = [q;z] \: k = [k;k'] \: v = [v;v']$
+$q = [q;z] \quad k = [k;k'] \quad v = [v;v']$
 
 PSA is similar to AtM, except it has different K and V:
 
-$k' = mlp_{k}(z) \: v' = mlp_{v}(z)$
+$k' = mlp_{k}(z) \quad v' = mlp_{v}(z)$
 
-$q = [q;z] \: k = [k;k'] \:v = [v;v']$
+$q = [q;z] \quad k = [k;k'] \quad v = [v;v']$
 
 **Q2:** What are the labels in Algorithm 1 line 9?
 The labels in Algorithm 1 line 9 can be found in Table 9. 
