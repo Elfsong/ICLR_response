@@ -114,6 +114,14 @@ Regarding the intrinsic benchmark [1], which is designed for the masked language
 
 **Q2:** for the intuition part of the paper, why does removing the word 'Ethiopian' then the bias is reduced? how is the bias defined here?
 
+The Bias definition can be found in Section 2.1.
+
+Let's take a sentence completion task as an example where an LLM is given a prompt such as "Many people live in Ethiopia". The resulting completions might reflect stereotypical views like "the people are very thin and proficient at long-distance running", or anti-stereotypical completions "the people are overweight and lack athletic abilities". To mitigate racial bias, it's essential for LLMs to avoid generating either stereotypical or anti-stereotypical responses. Ideally, the LLM should generate both types of completions with roughly equivalent probabilities. 
+
+A common method employed to realize this involves removing or obfuscating race-specific information in the context (more specifically, alleviating the LLM attention on the race trigger word "Ethiopian". The ideal situation will be the LLM ignores bias trigger words, which equals to the prompt "Many people live on Earth" which has no race information).
+
+Motivated by this, we propose the integration of a latent variable, representing the neutral bias attribute, into our decoder. This modification aims to guide the decoder towards generating less biased sentence completions.
+
 **Q3:**  When using the BERT as encoder, do you use the [cls] vector as the latent space point?
 
 We added an MLP layer on the top of BERT [cls]. We also explored the pooling of the sequence representation, the performance was similar.
