@@ -2,6 +2,10 @@
 
 **Q1:** Intrinsic and Extrinsic Evaluation
 
+We conduct extrinsic evaluations on three benchmarks shown below. All of them employed the sequence-to-sequence style. For the classification tasks, we limited the vocabulary to ensure we could access the logit of each class.
+
+Regarding the intrinsic benchmark [1], which is designed for the masked language models. It is not compatible with the generative language models. Meanwhile, recent studies [2, 3] have brought the validity of SEAT into question due to the counter-intuitive results it often produces. As referenced in [4], SEAT is found to lack a consistent correlation with extrinsic metrics. This finding implies that a model can potentially receive high scores from SEAT, while simultaneously rendering biased judgments in downstream conditions. Therefore, we have chosen to disregard SEAT as an evaluation metric in our work.
+
 #### WinoBias
  - **Task Type**: Coreference
  - **Prompt**: COREF: {sentence}\n\nResult: {sentence_with_bracketed_coreference}
@@ -109,6 +113,13 @@
 | GPT2 + DICE           | 82.66 | 90.04 |   88.02 |   73.77 |
 
 
+[1] Kaneko, Masahiro, and Danushka Bollegala. "Unmasking the mask–evaluating social biases in masked language models." _Proceedings of the AAAI Conference on Artificial Intelligence_. Vol. 36. No. 11. 2022.
+
+[2] May, Chandler, et al. "On measuring social biases in sentence encoders." _arXiv preprint arXiv:1903.10561_ (2019).
+
+[3] He, Jacqueline, et al. "Mabel: Attenuating gender bias using textual entailment data." _arXiv preprint arXiv:2210.14975_ (2022).
+
+[4] Goldfarb-Tarrant, Seraphina, et al. "Intrinsic bias metrics do not correlate with application bias." _arXiv preprint arXiv:2012.15859_ (2020).
 
 **Q2:** for the intuition part of the paper, why does removing the word 'Ethiopian' then the bias is reduced? how is the bias defined here?
 
