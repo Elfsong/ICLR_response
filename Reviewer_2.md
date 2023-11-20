@@ -1,5 +1,5 @@
 # Reviewer 2
-Thank you for your valuable review and constructive suggestions! 
+Thank you for your valuable review and constructive suggestions!  I hope the response can address all the raised concerns and questions.
 
 **Q1:** *Given longer enough context, the autoregressive model will ignore the effects of the latent variables, especially with powerful enough decoders. I see you use the cyclic annealing in Bert+GPT2 experiment to address this issue. However, I want to know more results and evaluation for more powerful models such as LLaMA-2.*
 
