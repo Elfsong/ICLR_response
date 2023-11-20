@@ -39,9 +39,21 @@
 | GPT 2 + Self-Debias   | 50.76 | 49.75 | 57.58 | 51.77 |    1.01 |    5.81 |       3.9 |      9.74 |
 | GPT2 + DICE           | 63.64 |  55.3 | 63.89 | 68.94 |    8.34 |    5.05 |     -3.43 |      10.5 |
 
-
-
-
+#### Bias-NLI
+ - **Task Type:** Natural Language Inference
+ - **Prompt:** Hypothesis: {hypothesis}\n\nPremise: {premise}\n\nResult: {label}
+ - **Example:** Hypothesis: A person on a horse jumps over a broken down airplane.\n\nPremise: A person is outdoors, on a horse.\n\nResult: entailment
+ - **Settings:**
+	 - Training Dataset: SNLI dataset 
+	 - Evaluation Dataset: Bias-NLI dataset
+	 - Epoch: 3
+	 - Learning rate: 1e-4 
+	 - Optimizer: paged\_adamw\_32bit
+ - **Metrics:** 
+	 - Net Neutral (NN): The average probability of the neutral label across all sentence pairs.
+	  - Fraction Neutral (FN): The fraction of sentence pairs labeled neutral.
+	  - T: A parameterized measure that reports the fraction of examples whose probability of neutral above t: we report this for t = 0.5 and t = 0.7. 
+- **Results:** 
 
 | Models                | Acc. (All) ↑ | Acc. (M) ↑ | Acc. (F) ↑ | TPR-GAP ↓ | TPR-RMS ↓ |
 |-----------------------|:------------:|:----------:|:----------:|:---------:|:---------:|
