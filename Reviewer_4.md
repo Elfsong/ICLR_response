@@ -1,5 +1,7 @@
 # Reviewer 4
 
+We thank the reviewer for the comments and questions! I hope the response can address all the raised concerns and questions.
+
 **Q1:** Intrinsic and Extrinsic Evaluation
 
 We conduct extrinsic evaluations on three benchmarks shown below. All of them employed the sequence-to-sequence style. For the classification tasks, we limited the vocabulary to ensure we could access the logit of each class.
