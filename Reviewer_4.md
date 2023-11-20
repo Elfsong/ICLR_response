@@ -1,6 +1,6 @@
 # Reviewer 4
 
-We thank the reviewer for the comments and questions! I hope the response can address all the raised concerns and questions.
+We thank the reviewer for the comments and questions! We hope the response can address all the raised concerns and questions.
 
 **Q1:** Intrinsic and Extrinsic Evaluation
 
