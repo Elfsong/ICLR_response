@@ -4,7 +4,7 @@ We thank the reviewer for their thoughtful feedback and hope the response can ad
 
 **Q1**: How is your sampling method connected to diffusion models?
 
-It's a good question. Thank you for questioning. To be concise, we employ an ODE solver in this paper, which can be regarded as a sort of ``deterministic'' diffusion model [1].
+We employ an ODE solver in this work, which can be regarded as a sort of ``deterministic'' diffusion model [1].
 
 Our motivation is to use the ODE solver to gradually converge the latent variable obtained from the VAE encoder to the energy area we expect under the guidance of EBM. This time-variant process can be regarded as a reverse diffusion process. [1] stated the reverse of a diffusion process is also a diffusion process. Crucially, this reverse process satisfies a reverse-time SDE, which can be derived from the forward SDE given the score of the marginal probability densities as a function of time. Moreover, for all diffusion processes, there exists a corresponding deterministic process whose trajectories share the same marginal probability densities as the SDE. This deterministic process satisfies an ODE [2]. Above is the connection between our sampling method and diffusion models.
 
@@ -22,7 +22,9 @@ Regarding why we opted for ODE instead of Langevin dynamics, here are reasons fr
 
 **Q3:** How equation 8 satisfies the continuity equation and converges to your target distribution?
 
-We are using the Runge-Kutta of order 5 of Dormand-Prince-Shampine. 
+The ODE solver in our paper uses the Runge-Kutta of order 5 of Dormand-Prince-Shampine [3], which accepts any callable implementing the ordinary differential equation, even a neural network. Therefore, there is no strict continuity requirement to use the solver. We use Softplus instead of ReLU to avoid non-smooth non-linearities as well.
+
+Convergence is guaranteed by the EBM-guided ODE solver, which depends on the quality of classifier training. In our case, the BERT encoder is enough to extract enough semantic information to allow the classifier to distinguish different biased attributes (Netrual F1: {"gender": 0.87, "race": 0.62, "religion": 0.47}).
 
 **Q4:** How the generated latent variable guarantees the desired properties?
 
@@ -35,3 +37,5 @@ Pretrain + ODE Solver + Decoder
 [1] Anderson, Brian DO. "Reverse-time diffusion equation models." Stochastic Processes and their Applications 12.3 (1982): 313-326.
 
 [2] Song, Yang, et al. "Score-based generative modeling through stochastic differential equations." arXiv preprint arXiv:2011.13456 (2020).
+
+[3] Chen, Ricky TQ, et al. "Neural ordinary differential equations." Advances in neural information processing systems 31 (2018).
