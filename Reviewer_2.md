@@ -3,14 +3,19 @@ Thank you for your valuable review and constructive suggestions!  I hope the res
 
 **Q1:** *Given longer enough context, the autoregressive model will ignore the effects of the latent variables, especially with powerful enough decoders. I see you use the cyclic annealing in Bert+GPT2 experiment to address this issue. However, I want to know more results and evaluation for more powerful models such as LLaMA-2.*
 
+In this study, we employ cyclic annealing and infusion mechanisms (AtM and PSA) to prevent mode collapse from the decoder. Noteworthily, our empirical results show that more powerful decoders even demonstrate better debiasing performance in our approach. We postulate this enhanced performance may be attributed to the fact that these more potent decoders have a refined comprehension of bias, thus enabling sounder debiasing effects through the guidance of the latent variable.
+
+In our experiments, we have reported results for the GPT2, Llama-7B, and Llama 2-7B models respectively. Regarding the larger Llama 2 models (such as 13B and 70B configurations), we have commenced evaluation processes. We will update the data once we have gathered the necessary results as soon as possible.
+
 **Q2:** *Do you consider using learnable prior in the training rather than in a two-step manner?*
 
-**Q3:** *Latent space EBM.*
+**Q3:** *Latent space EBM citations.*
+
 We thank you for pointing out several important references that were missing in the original submission. We will carefully incorporate them in the final revision paper.
 
 **Q4:** *For the ODE sampler, how does the ODE solver compare performance-wise to using Equ.11 directly for Langevin sampling (without noise)? Could you distinguish between your Runge-Kutta method and Langevin sampling in implementation?*
 
-It's a good question. Attached is the comparison between Ordinary Differential Equation (ODE) and Stochastic gradient Langevin dynamics (SGLD) (without noise): 
+Attached is the comparison between Ordinary Differential Equation (ODE) and Stochastic gradient Langevin dynamics (SGLD) (without noise): 
 
 The vanilla SGLD samples from an expected probability distribution $p(x)$ by the score function $\nabla_{x} \log(p(x))$. Given a fixed step size $\epsilon > 0$, a stochastic term $z_{t} \sim \mathcal{N}(0, I)$, and an initial value $x_0$ from a prior distribution, the Langevin method recursively computes the following:
 
