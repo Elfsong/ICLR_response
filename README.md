@@ -31,7 +31,7 @@ In the Crows-Pairs Benchmark, the labels are defined as {more, less}, and the bi
 We don't assign a label to the context directly. The difference between our work and [3] here is that we encode the context to a latent variable and push it ahead to the "neutral" area in the latent space via an EBM-guided ODE solver. Then integrating the latent variable with the context by an infusion mechanism (AtM or PSA). As we have pretrained the encoder (BERT) and the decoder (LLM) together, the decoder can effectively interpret the latent variable's meaning, resulting in less biased completions. Conceptually, the latent variable serves as a "soft prompt" that is tailored to each individual context and guides the decoder to yield less biased completions. The baseline Self-Debias [4] has demonstrated the feasibility of using prompts to guide LLM debiasing, although "fixed hard prompts" were used in this baseline.
 
 **Q4:** Confusing metric scores.
-Sorry for the confusion caused. In the original table, the absolute difference between the raw ss score and 50 was utilized, denoted numerically as $ss = abs(50 - raw ss)$, so that the value should be the lower the better. This modification was unfortunately not explicitly conveyed.
+Sorry for the confusion caused. In the original table, the absolute difference between the raw ss score and 50 was utilized, denoted numerically as $ss = abs(50 - raw_ss)$, so that the value should be the lower the better. This modification was unfortunately not explicitly conveyed.
 
 In the revised paper, the raw ss score has been reinstated to maintain consistency with the initial definition. The ss score now serves as an indicator of the model's bias polarity. A score exceeding 50 represents stereotypical bias, while a score below 50 indicates anti-stereotypical bias. The ideal ss score is thus 50.
 
@@ -62,6 +62,9 @@ Regarding the GPT2-large Race score, a mistake occurred during the transformatio
 
 
 [1] Li, Chunyuan, et al. "Optimus: Organizing sentences via pre-trained modeling of a latent space." arXiv preprint _arXiv:2004.04092_ (2020).
+
 [2] Fang, Le, et al. "Transformer-based conditional variational autoencoder for controllable story generation." _arXiv preprint arXiv:2101.00828_ (2021).
+
 [3] Liu, Guangyi, et al. "Composable text controls in latent space with odes." _arXiv preprint arXiv:2208.00638_ (2022).
+
 [4] Schick, Timo, Sahana Udupa, and Hinrich Schütze. "Self-diagnosis and self-debiasing: A proposal for reducing corpus-based bias in nlp." _Transactions of the Association for Computational Linguistics_ 9 (2021): 1408-1424.
