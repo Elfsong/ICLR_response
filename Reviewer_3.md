@@ -28,7 +28,11 @@ Convergence is guaranteed by the EBM-guided ODE solver, which depends on the qua
 
 **Q4:** How the generated latent variable guarantees the desired properties?
 
-Pretrain + ODE Solver + Infusion
+Our training procedure consists of two main steps:
+
+Initially, we train the VAE on a pretraining corpus (wikitext-2) to establish the connection between the encoder and decoder. During this step, the latent variable produced by the encoder is directly fed into the decoder, skipping the ODE sampling.
+
+Following that, we proceed to train the VAE on bias datasets. Here, the original latent variable is iteratively sampled to bear the desired bias attribute. This step ensures that the decoder focuses on the latent variable, thereby driving the decoder to generate completions with the desired properties.
 
 **Q5:** How does the latent variable sampled from EBMs maintain consistency with the VAE latent space?
 
