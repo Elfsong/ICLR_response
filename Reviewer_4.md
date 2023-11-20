@@ -4,7 +4,7 @@ We thank the reviewer for the comments and questions! We hope the response can a
 
 **Q1:** Intrinsic and Extrinsic Evaluation
 
-We conduct extrinsic evaluations on three benchmarks shown below. All of them employed the sequence-to-sequence style. For the classification tasks, we limited the vocabulary to ensure we could access the logit of each class.
+We conduct extrinsic evaluations on three benchmarks shown below. All of them employed the sequence-to-sequence style. For the classification tasks, we limited the vocabulary list to ensure we could access the logit of each class. The results revealed that our method exceeded the performance of the majority of baselines within these extrinsic benchmarks and was successful in striking an optimal balance between maintaining language modeling capability while minimizing bias.
 
 Regarding the intrinsic benchmark [1], which is designed for the masked language models. It is not compatible with the generative language models. Meanwhile, recent studies [2, 3] have brought the validity of SEAT into question due to the counter-intuitive results it often produces. As referenced in [4], SEAT is found to lack a consistent correlation with extrinsic metrics. This finding implies that a model can potentially receive high scores from SEAT, while simultaneously rendering biased judgments in downstream conditions. Therefore, we have chosen to disregard SEAT as an evaluation metric in our work.
 
