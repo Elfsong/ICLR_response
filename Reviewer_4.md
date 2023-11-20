@@ -112,6 +112,11 @@ Regarding the intrinsic benchmark [1], which is designed for the masked language
 | GPT 2 + Self-Debias   | 81.49 | 89.29 |   89.57 |   73.58 |
 | GPT2 + DICE           | 82.66 | 90.04 |   88.02 |   73.77 |
 
+**Q2:** for the intuition part of the paper, why does removing the word 'Ethiopian' then the bias is reduced? how is the bias defined here?
+
+**Q3:**  When using the BERT as encoder, do you use the [cls] vector as the latent space point?
+
+We added an MLP layer on the top of BERT [cls]. We also explored the pooling of the sequence representation, the performance was similar.
 
 [1] Kaneko, Masahiro, and Danushka Bollegala. "Unmasking the mask–evaluating social biases in masked language models." _Proceedings of the AAAI Conference on Artificial Intelligence_. Vol. 36. No. 11. 2022.
 
@@ -120,9 +125,3 @@ Regarding the intrinsic benchmark [1], which is designed for the masked language
 [3] He, Jacqueline, et al. "Mabel: Attenuating gender bias using textual entailment data." _arXiv preprint arXiv:2210.14975_ (2022).
 
 [4] Goldfarb-Tarrant, Seraphina, et al. "Intrinsic bias metrics do not correlate with application bias." _arXiv preprint arXiv:2012.15859_ (2020).
-
-**Q2:** for the intuition part of the paper, why does removing the word 'Ethiopian' then the bias is reduced? how is the bias defined here?
-
-**Q3:**  When using the BERT as encoder, do you use the [cls] vector as the latent space point?
-
-We added an MLP layer on the top of BERT [cls]. We also explored the pooling of the sequence representation, the performance was similar.
