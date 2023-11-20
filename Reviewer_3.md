@@ -36,7 +36,7 @@ Following that, we proceed to train the VAE on bias datasets. Here, the original
 
 **Q5:** How does the latent variable sampled from EBMs maintain consistency with the VAE latent space?
 
-Pretrain + ODE Solver + Decoder 
+The answer to Q4 may answer this question.
 
 [1] Anderson, Brian DO. "Reverse-time diffusion equation models." Stochastic Processes and their Applications 12.3 (1982): 313-326.
 
