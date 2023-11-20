@@ -15,7 +15,7 @@ We thank you for pointing out several important references that were missing in 
 
 **Q4:** *For the ODE sampler, how does the ODE solver compare performance-wise to using Equ.11 directly for Langevin sampling (without noise)? Could you distinguish between your Runge-Kutta method and Langevin sampling in implementation?*
 
-Attached is the comparison between Ordinary Differential Equation (ODE) and Stochastic gradient Langevin dynamics (SGLD) (without noise): 
+We have previously contemplated employing Stochastic Gradient Langevin Dynamics (SGLD) for sampling. However, we found the training procedure to be immensely challenging and susceptible to instability. Attached is the comparison between ODE and SGLD: 
 
 The vanilla SGLD samples from an expected probability distribution $p(x)$ by the score function $\nabla_{x} \log(p(x))$. Given a fixed step size $\epsilon > 0$, a stochastic term $z_{t} \sim \mathcal{N}(0, I)$, and an initial value $x_0$ from a prior distribution, the Langevin method recursively computes the following:
 
