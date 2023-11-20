@@ -8,11 +8,13 @@ Both AtM [1] and PSA [2] operate as the infusion mechanism connecting the encode
 AtM projects the latent variable z into both the attention key and value spaces by a MLP. It then concatenates them with the key and value vector in each attention layer within the decoder. This process can be thought of as the insertion of a "soft" prompt prefix ahead of the context. In this scenario, the latent variable functions as Q, with the Key and Value (KV) being projected by Q:
 
 $k' = v' = mlp(z)$
+
 $q = [q;z] \: k = [k;k'] \: v = [v;v']$
 
 PSA is similar to AtM, except it has different K and V:
 
 $k' = mlp_{k}(z) \: v' = mlp_{v}(z)$
+
 $q = [q;z] \: k = [k;k'] \:v = [v;v']$
 
 **Q2:** What are the labels in Algorithm 1 line 9?
