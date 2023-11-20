@@ -1,11 +1,12 @@
 # Reviewer 2
-Thank you for your valuable review and constructive suggestions! We will carefully incorporate them in the final revision paper.
+Thank you for your valuable review and constructive suggestions! 
 
 **Q1:** *Given longer enough context, the autoregressive model will ignore the effects of the latent variables, especially with powerful enough decoders. I see you use the cyclic annealing in Bert+GPT2 experiment to address this issue. However, I want to know more results and evaluation for more powerful models such as LLaMA-2.*
 
 **Q2:** *Do you consider using learnable prior in the training rather than in a two-step manner?*
 
 **Q3:** *Latent space EBM.*
+We thank you for pointing out several important references that were missing in the original submission. We will carefully incorporate them in the final revision paper.
 
 **Q4:** *For the ODE sampler, how does the ODE solver compare performance-wise to using Equ.11 directly for Langevin sampling (without noise)? Could you distinguish between your Runge-Kutta method and Langevin sampling in implementation?*
 
