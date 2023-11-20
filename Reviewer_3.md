@@ -1,5 +1,7 @@
 # Reviewer 3
 
+We thank the reviewer for their thoughtful feedback and hope the response can address the raised concerns and questions.
+
 **Q1**: How is your sampling method connected to diffusion models?
 
 It's a good question. Thank you for questioning. To be concise, we employ an ODE solver in this paper, which can be regarded as a sort of ``deterministic'' diffusion model [1].
