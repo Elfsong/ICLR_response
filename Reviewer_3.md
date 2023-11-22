@@ -96,3 +96,5 @@ Briefly, this trick imports a coefficient $\beta$ that regulates the weight of t
 - The noise scale selection is not a simple problem. Adding too much noise will cover more low-probability space and drastically change the original data distribution, while too small noise will be useless to the low-probability space less dense. 
 
 Therefore, the final solution we ended up using was to add a 4-loop annealing factor to rescale the KL divergence.
+
+
