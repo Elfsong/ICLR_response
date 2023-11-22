@@ -43,3 +43,16 @@ The answer to Q4 may answer this question.
 [2] Song, Yang, et al. "Score-based generative modeling through stochastic differential equations." arXiv preprint arXiv:2011.13456 (2020).
 
 [3] Chen, Ricky TQ, et al. "Neural ordinary differential equations." Advances in neural information processing systems 31 (2018).
+
+
+===
+
+Thank you for your feedback. We are more than willing to answer your questions:
+
+Q1: Consider a diffusion process that iteratively blurs an image to reach a Gaussian distribution ($\mathcal{N}(0, I)$) in the forward process, and in reverse, iteratively samples an image back from a Gaussian distribution  ($\mathcal{N}(0, I)$). In this context, the time-varying probability $p_0$ depicts the image data distribution, and $p_T$ represents the initial distribution $\sim\mathcal{N}(0, I)$. An illustrative example can be found in Fig. 1 of [1]. Our model emulates the reverse diffusion process, which can be represented as an SDE. We aim for the latent variable to gradually accommodate the desired attribute, enabling us to quantitively control the bias level. To this end, we employ an ODE solver (Runge-Kutta of order 5 of Dormand-Prince-Shampine) to approximate the target distribution given the original encoder output. Unlike conventional SDE which samples from a normal distribution, we treat each training data as a sample and then convert it into a representation in the latent space through the encoder. We can change the name if you feel it is inappropriate to call it sampling.
+
+We hypothesize that our main divergence lies in how to sample from the latent space effectively. Though gradient descent seems an intuitive approach to approximate the target distribution, it exhibits significant limitations in our scenario. In our empirical experiments, we found that gradient descent is laborious to train and tends to produce unstable output—an issue also noted in [1,2,3]. Moreover, our model is designed to debias multiple attributes simultaneously, a scenario that SGLD may not adeptly accommodate. In fact, SGLD's performance significantly deteriorates under joint debiasing settings. This decrease in performance can potentially be attributed to the naive disregard by SGLD of the weight that each joint score function holds. For instance, in the case of a joint score function $ \log p(x) = \log (w_1 * p_1(x) + w_2 * p_2(x)) $, SGLD employs $ \nabla_x \log p(x) = \nabla_x \log p_1(x) + \nabla_x \log p_2(x) $ to sample from $p(x)$, without considering the corresponding weights.
+
+For Q2, "... while SGLD is slower and less diverse". It is really supervised to me. Why a stochastic sampler is less diverse to a deterministic gradient decent?
+
+For Q5, I think you misunderstood my question. It is true that if you just run a few steps, the resulting samples are not far away from the latent space learned by VAE. However, it is noteworthy that in eq.8, there is no constraint that ensures the samples should be sampled in the latent space of VAE, and it's very dangerous that your samples can be far away from the learned spaces. Therefore, I think doing projected gradient descent is better than doing gradient descent.
