@@ -85,7 +85,7 @@ We appreciate your prompt reply!
 
 The corresponding description can be found in Appendix 2.
 
-$\mathcal{L}_{vae}(x) = -E_{q(z|x)} [\log p(x|z)] + \beta \cdot \rm{KL}(q(z|x) || p_{prior}(z))$
+$ \mathcal{L}_{vae}(x)=-E\_{q(z|x)}  [\log p(x|z)] + \beta \cdot \rm{KL} (q(z|x) || p\_{prior}(z))$
 
 Briefly, this trick imports a coefficient $\beta$ that regulates the weight of the KL divergence on the VAE objective. The coefficient is gradually changed from 0 to 1. The motivation for doing this is as follows:
 
