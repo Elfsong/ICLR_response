@@ -65,7 +65,7 @@ In a joint debiasing scenario, where biases related to "gender", "race", and "re
 
 **Q3:** 
 
-I agree with your point. There is indeed potential danger if the sample strays significantly away from the learning space. Current empirical observations indicate minimal impact on the decoder (likely attributable to the fewer than 10 ODE iterations performed). To further confirm these findings, we plan to conduct additional experiments, projecting parameters into the decoder’s constraint space, and providing theoretical boundaries for the latent variables. Your suggestions are greatly appreciated!
+I agree with your point. There is indeed potential danger if the sample strays significantly away from the learning space. Current empirical observations indicate less impact on the decoder (likely attributable to the fewer than 10 ODE iterations performed). To further confirm these findings, we plan to conduct additional experiments, projecting parameters into the decoder’s constraint space, and providing theoretical boundaries for the latent variables. Your suggestions are greatly appreciated!
 
 [1] Song, Yang, et al. "Score-based generative modeling through stochastic differential equations." _arXiv preprint arXiv:2011.13456_ (2020).
 
