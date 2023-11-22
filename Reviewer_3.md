@@ -72,3 +72,27 @@ I agree with your point. There is indeed potential danger if the sample strays s
 [2] Nie, Weili, Arash Vahdat, and Anima Anandkumar. "Controllable and compositional generation with latent-space energy-based models." _Advances in Neural Information Processing Systems_ 34 (2021): 13497-13510.
 
 [3] Liu, Guangyi, et al. "Composable text controls in latent space with odes." _arXiv preprint arXiv:2208.00638_ (2022).
+
+===
+
+Thanks for your great effort in responding to my questions.
+
+"To address this problem, we introduce scaled noise to perturb the supports, despite the ODE's deterministic nature. Consequently, our approach can generate a wider range of diverse results"
+
+Could you explain briefly what you mean by "introduce scaled noise to perturb the supports"? Is there a corresponding description in the paper?
+
+We appreciate your prompt reply!
+
+The corresponding description can be found in Appendix 2.
+
+$\mathcal{L}_{vae}(x) = -E_{q(z|x)} [\log p(x|z)] + \beta \cdot \rm{KL}(q(z|x) || p_{prior}(z))$
+
+Briefly, this trick imports a coefficient $\beta$ that regulates the weight of the KL divergence on the VAE objective. The coefficient is gradually changed from 0 to 1. The motivation for doing this is as follows:
+
+- Since the definition domain of Gaussian noise is the entire latent space, adding noise to the original data solves the zero probability problem of low-dimensional manifolds (otherwise the score function will not be able to steer the ODE solver).
+
+- Adding noise essentially expands the range of each mode in the distribution, allowing the low-probability areas in the data distribution to get more supervision signals. In particular, this is very effective for the joint-debiasing scenario.
+
+- The noise scale selection is not a simple problem. Adding too much noise will cover more low-probability space and drastically change the original data distribution, while too small noise will be useless to the low-probability space less dense. 
+
+Therefore, the final solution we ended up using was to add a 4-loop annealing factor to rescale the KL divergence.
